@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio Ongles – Prothésiste ongulaire</title>
+  <meta name="description" content="Stylisme ongulaire, manucure, pose de gel et nail art. Prenez rendez-vous au Studio Ongles – qualité, sécurité et créativité." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
+  <meta property="og:title" content="Studio Ongles – Prothésiste ongulaire">
+  <meta property="og:description" content="Stylisme ongulaire, manucure, pose de gel et nail art à votre mesure.">
+  <meta property="og:type" content="website">
+  <style>
+    :root{
+      --bg:#0f0f12;          /* fond général */
+      --card:#15151b;        /* cartes */
+      --soft:#1d1d25;        /* hover/alternate */
+      --text:#f6f6f9;        /* texte principal */
+      --muted:#b8b8c7;       /* texte secondaire */
+      --brand:#ff4fb3;       /* rose néon */
+      --brand-2:#8a7dff;     /* violet doux */
+      --success:#2ecc71;
+      --danger:#ff6b6b;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:1100px;
+    }
+
+    /* Reset + base */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(255,79,179,.15), transparent 60%),
+                  radial-gradient(900px 500px at -10% 10%, rgba(138,125,255,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:auto;padding:0 24px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:rgba(15,15,18,.6);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:72px;gap:16px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px
+    }
+    .brand-badge{
+      width:36px;height:36px;border-radius:10px;
+      background: conic-gradient(from 180deg, var(--brand), var(--brand-2));
+      display:grid;place-items:center;box-shadow:var(--shadow)
+    }
+    .brand-badge svg{width:22px;height:22px;fill:#fff}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 14px;border-radius:10px;color:var(--muted)}
+    nav a:hover, nav a:focus{background:var(--soft);color:var(--text)}
+    .cta{
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      padding:10px 16px;border-radius:999px;color:#fff;font-weight:600;box-shadow:var(--shadow);
+      border:none;cursor:pointer
+    }
+    .mobile-toggle{display:none;background:transparent;border:0;color:var(--text);font-size:28px}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 40px 0;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;gap:10px;align-items:center;
+      background:rgba(255,79,179,.12);border:1px solid rgba(255,79,179,.25);
+      padding:6px 12px;border-radius:999px;font-size:.9rem;color:#ffd9ef
+    }
+    .hero h1{
+      font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+      line-height:1.15;margin:16px 0 12px
+    }
+    .lead{color:var(--muted);font-size:1.1rem;max-width:55ch}
+    .hero-actions{display:flex;gap:16px;margin-top:22px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;
+      background:var(--card);border:1px solid rgba(255,255,255,.08);color:var(--text)
+    }
+    .btn:hover{background:var(--soft)}
+    .btn svg{width:18px;height:18px;fill:currentColor}
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)
+    }
+    .hero-card .imgwrap{
+      aspect-ratio: 4/3; border-radius:12px; overflow:hidden; background:#222; position:relative
+    }
+    .tag{
+      position:absolute;bottom:10px;left:10px;padding:6px 10px;border-radius:999px;
+      background:rgba(0,0,0,.5);backdrop-filter:blur(4px);font-size:.85rem
+    }
+
+    /* Sections */
+    section{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+    .section-head h2{margin:0;font-size:clamp(1.4rem,1rem + 1.5vw,2rem)}
+    .section-head p{margin:0;color:var(--muted)}
+
+    /* Services */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;display:flex;gap:14px
+    }
+    .icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.06)}
+    .card h3{margin:.2rem 0 .3rem}
+    .card p{color:var(--muted);margin:0}
+
+    /* Galerie */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .gallery figure{
+      grid-column: span 3; margin:0; position:relative; border-radius:14px; overflow:hidden; background:#222;
+      border:1px solid rgba(255,255,255,.07)
+    }
+    .gallery figure.large{grid-column: span 6}
+    .gallery figcaption{
+      position:absolute;inset:auto 8px 8px 8px; background:rgba(0,0,0,.4); padding:6px 10px;border-radius:10px; font-size:.9rem
+    }
+    .gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+    .gallery figure:hover img{transform:scale(1.03)}
+    .gallery img{transition:transform .4s ease}
+
+    /* Tarifs */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;box-shadow:var(--shadow)
+    }
+    .price{
+      font-size:1.8rem;font-weight:800;margin:8px 0;background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .price-card ul{margin:0;padding-left:18px;color:var(--muted)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(138,125,255,.15);border:1px solid rgba(138,125,255,.35);font-size:.85rem}
+
+    /* À propos */
+    .about{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center
+    }
+    .about .bio{
+      background:var(--card);border:1px solid rgba(255,255,255,.08);padding:18px;border-radius:16px
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:24px
+    }
+    form{
+      display:grid;gap:12px;background:var(--card);padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,.08)
+    }
+    label{font-weight:600}
+    input,textarea,select{
+      width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#101017;color:var(--text)
+    }
+    input:focus,textarea:focus,select:focus{outline:2px solid var(--brand)}
+    .helper{color:var(--muted);font-size:.9rem}
+    .map{
+      min-height:320px;border-radius:16px;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:#0b0b10;
+      display:grid;place-items:center;color:var(--muted)
+    }
+
+    /* Footer */
+    footer{
+      padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.06)
+    }
+    .footlinks{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid, .about, .contact{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .pricing{grid-template-columns:1fr 1fr}
+      .gallery figure{grid-column: span 6}
+    }
+    @media (max-width: 620px){
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+      .cards,.pricing{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(6,1fr)}
+      .gallery figure{grid-column: span 3}
+      .section-head{flex-direction:column;align-items:flex-start}
+    }
+
+    /* Accessibilité : réduire animations */
+    @media (prefers-reduced-motion: reduce){
+      .gallery img{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Navigation principale">
+      <a class="brand" href="#top">
+        <span class="brand-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14.5 2c-.8 0-1.6.3-2.2.9l-9.2 9.2c-.7.7-.7 1.9 0 2.6l6.2 6.2c.7.7 1.9.7 2.6 0l9.2-9.2c1.2-1.2 1.2-3.2 0-4.4L16.7 2.9c-.6-.6-1.4-.9-2.2-.9z"/></svg>
+        </span>
+        <span>Studio Ongles</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Ouvrir le menu" onclick="document.querySelector('nav ul').style.display = (getComputedStyle(document.querySelector('nav ul')).display==='none'?'flex':'none');">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#services">Prestations</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#contact">Prendre rendez-vous</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">💅 Prothésiste ongulaire certifiée</span>
+        <h1>Des ongles qui subliment votre style.</h1>
+        <p class="lead">Manucure soignée, pose de gel, renforcement, nail art précis. Hygiène irréprochable, matériaux de qualité, résultats durables.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#services" aria-label="Voir les prestations">
+            <!-- services icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v1h2a3 3 0 013 3v2h1a3 3 0 010 6h-1v2a3 3 0 01-3 3h-2v1a3 3 0 01-6 0v-1H7a3 3 0 01-3-3v-2H3a3 3 0 010-6h1V9a3 3 0 013-3h2V5a3 3 0 013-3z"/></svg>
+            Prestations
+          </a>
+          <a class="btn" href="#galerie" aria-label="Voir la galerie">
+            <!-- camera icon -->
+            <svg viewBox="0 0 24 24"><path d="M9 3l2 2h2l2-2h3a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5zm3 5a6 6 0 100 12 6 6 0 000-12z"/></svg>
+            Galerie
+          </a>
+          <a class="btn" href="#contact" aria-label="Aller au contact">Contact</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Mise en avant">
+        <div class="imgwrap" role="img" aria-label="Main posant avec nail art rose et violet">
+          <!-- Remplace par ta photo (1200x900 conseillé) -->
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop" alt="Nail art rose et violet" />
+          <span class="tag">Tendances 2025</span>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <span class="badge">Gel & Acrygel</span>
+          <span class="badge">Renforcement</span>
+          <span class="badge">Nail art</span>
+          <span class="badge">Mariages</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Services -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="services-title">Prestations</h2>
+        <p>Des soins personnalisés pour des ongles impeccables.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon" aria-hidden="true">✨</div>
+          <div>
+            <h3>Manucure & soin</h3>
+            <p>Beauté des mains, cuticules, mise en forme et finition brillante.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">💎</div>
+          <div>
+            <h3>Pose de gel / acrygel</h3>
+            <p>Extension chablon ou capsule, rendu naturel et résistant.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🎨</div>
+          <div>
+            <h3>Nail art</h3>
+            <p>French, babyboomer, motifs, pierres & effets (cat eye, sirène…).</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🔧</div>
+          <div>
+            <h3>Remplissage</h3>
+            <p>Entretien 3–4 semaines, réparations et rééquilibrage.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧼</div>
+          <div>
+            <h3>Dépose & renfort</h3>
+            <p>Dépose douce + renforcement de l’ongle naturel si besoin.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🌿</div>
+          <div>
+            <h3>Préparation douce</h3>
+            <p>Protocoles d’hygiène rigoureux et produits de qualité.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section id="galerie" aria-labelledby="galerie-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="galerie-title">Galerie</h2>
+        <p>Quelques réalisations récentes.</p>
+      </div>
+      <div class="gallery" aria-live="polite">
+        <!-- Remplace les images par les tiennes -->
+        <figure class="large">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop" alt="Babyboomer rose pâle" />
+          <figcaption>Babyboomer</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1560869713-7b4b8d2bc1f1?q=80&w=800&auto=format&fit=crop" alt="Nail art paillettes" />
+          <figcaption>Paillettes</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1607779097040-6b18a7b14bf1?q=80&w=800&auto=format&fit=crop" alt="French classique" />
+          <figcaption>French</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1610992015732-2449a63e1e96?q=80&w=800&auto=format&fit=crop" alt="Effet cat eye" />
+          <figcaption>Cat eye</figcaption>
+        </figure>
+        <figure class="large">
+          <img src="https://images.unsplash.com/photo-1600959907703-125ba1374a0c?q=80&w=1200&auto=format&fit=crop" alt="Pose gel nude" />
+          <figcaption>Gel nude</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1556229162-5c63ed9c4efb?q=80&w=800&auto=format&fit=crop" alt="Nail art graphique" />
+          <figcaption>Graphique</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop" alt="Dégradé violet" />
+          <figcaption>Dégradé</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1522335789203-b1f28e1568ad?q=80&w=800&auto=format&fit=crop" alt="Couleurs pastels" />
+          <figcaption>Pastels</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarifs -->
+  <section id="tarifs" aria-labelledby="tarifs-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="tarifs-title">Tarifs</h2>
+        <p>Transparents et sans surprise.</p>
+      </div>
+      <div class="pricing">
+        <article class="price-card">
+          <span class="badge">Découverte</span>
+          <h3>Manucure & vernis classique</h3>
+          <div class="price">29€</div>
+          <ul>
+            <li>Limage & cuticules</li>
+            <li>Base + couleur + top</li>
+            <li>Conseils d’entretien</li>
+          </ul>
+        </article>
+        <article class="price-card">
+          <span class="badge">Best-seller</span>
+          <h3>Pose de gel (sans extension)</h3>
+          <div class="price">49€</div>
+          <ul>
+            <li>Préparation douce</li>
+            <li>Renforcement naturel</li>
+            <li>Couleur unie incluse</li>
+          </ul>
+        </article>
+        <article class="price-card">
+          <span class="badge">Complet</span>
+          <h3>Extension gel + nail art</h3>
+          <div class="price">69€</div>
+          <ul>
+            <li>Chablon ou capsule</li>
+            <li>Longueurs S à M</li>
+            <li>Nail art simple (2 ongles)</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section id="apropos" aria-labelledby="apropos-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="apropos-title">À propos</h2>
+        <p>Expérience, hygiène, écoute : la base d’un beau résultat.</p>
+      </div>
+      <div class="about">
+        <div class="bio">
+          <h3>Bonjour, je suis Léa 👋</h3>
+          <p>Prothésiste ongulaire diplômée, je vous accueille dans un espace cosy et sécurisé. Chaque pose est adaptée à votre morphologie d’ongle et à votre style de vie.</p>
+          <p class="helper">Marques utilisées : <em>qualité salon</em>, produits respectueux et protocoles d’hygiène stricts.</p>
+          <a class="cta" href="#contact" style="display:inline-block;margin-top:10px">Je réserve un créneau</a>
+        </div>
+        <div class="imgwrap" style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+          <img src="https://images.unsplash.com/photo-1601024445258-cf2b3baa4c1e?q=80&w=1200&auto=format&fit=crop" alt="Espace manucure soigné">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="contact-title">Contact & rendez-vous</h2>
+        <p>Réponse sous 24h ouvrées.</p>
+      </div>
+      <div class="contact">
+        <form name="contact" aria-label="Formulaire de contact" onsubmit="event.preventDefault(); alert('Merci ! Votre demande a bien été envoyée.');">
+          <div>
+            <label for="nom">Nom*</label>
+            <input id="nom" name="nom" required autocomplete="name" />
+          </div>
+          <div>
+            <label for="email">Email*</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div>
+            <label for="tel">Téléphone</label>
+            <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" />
+          </div>
+          <div>
+            <label for="prestation">Préstation souhaitée</label>
+            <select id="prestation" name="prestation">
+              <option>Manucure</option>
+              <option>Pose de gel</option>
+              <option>Remplissage</option>
+              <option>Nail art</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Vos disponibilités, préférences…"></textarea>
+          </div>
+          <p class="helper">* Champs requis. En envoyant, vous acceptez notre politique de confidentialité.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="cta" type="submit">Envoyer</button>
+            <a class="btn" href="tel:+33000000000" aria-label="Appeler le salon">📞 Appeler</a>
+            <a class="btn" href="https://wa.me/33000000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+        </form>
+        <div class="map" role="img" aria-label="Plan d'accès">
+          <!-- Remplace cet iframe par une vraie carte Google si tu veux -->
+          <div class="container" style="text-align:center">
+            <p>📍 12 rue de la Manucure, 17000 La Rochelle</p>
+            <p class="helper">Ouvert du mar. au sam. – 9h30 à 18h30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Studio Ongles — Tous droits réservés.</div>
+      <div class="footlinks">
+        <a href="#">Mentions
